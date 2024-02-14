@@ -1,0 +1,49 @@
+*, *::before, *:: ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", serif;
+}
+
+:root {
+  --purple: #8f43ee;
+  --dark-brown: #2d2727;
+  --brown: #413543;
+  --yellow: #f0eb8d;
+  --white: #fff;
+  --white-smoke: #f5f5f5;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--dark-brown);
+  padding: 1rem;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 85rem;
+  width: 100%;
+}
+
+.title {
+  color: var(--yellow);
+  font-family: "Cormorant Infant", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.movement {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

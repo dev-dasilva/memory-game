@@ -1,0 +1,7 @@
+<div class="card__front">
+      <img class="front__img" src="${element.img}" alt="${element.name}" />
+      <h6 class="card__name">${element.name}</h6>
+    </div>
+    <div class="card__back">
+      <img class="back__img" src="assets/images/jolly.png" alt="Thought" />
+    </div>

@@ -123,7 +123,7 @@ function handleClick(e) {
     }
     // Validate is already win
     const isWin =
-      cardContainer.querySelectorAll("card--guessed").length ===
+      cardContainer.querySelectorAll(".card--guessed").length ===
       currentCards.length;
     if (isWin) {
       win();
@@ -140,13 +140,8 @@ function drawCards() {
     card.className = "card";
     card.setAttribute("data-id", element.id);
     card.innerHTML = `
-    <div class="card__front">
-      <img class="front__img" src="${element.img}" alt="${element.name}" />
-      <h6 class="card__name">${element.name}</h6>
-    </div>
-    <div class="card__back">
-      <img class="back__img" src="assets/images/jolly.png" alt="Thought" />
-    </div>
+    <div class="card__front" style="background-image: url('${element.img}')"></div>
+    <div class="card__back"></div>
     `;
     card.addEventListener("click", handleClick);
     cardContainer.appendChild(card);

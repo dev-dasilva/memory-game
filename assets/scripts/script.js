@@ -152,7 +152,7 @@ document.querySelector("#play-again").addEventListener("click", () => {
   modal.classList.remove("modal--open");
   isPaused = false;
   isLose = false;
-  counter = Cards.length + 10;
+  counter = CARDS.length + 10;
   drawCards();
 });
 

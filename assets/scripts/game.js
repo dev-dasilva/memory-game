@@ -2,63 +2,63 @@ const CARDS = [
   {
     id: 1,
     name: "luffy",
-    img: "assets/images/luffy.png",
+    img: "images/luffy.png",
   },
   {
     id: 2,
     name: "zoro",
-    img: "assets/images/zoro.png",
+    img: "images/zoro.png",
   },
   {
     id: 3,
     name: "sanji",
-    img: "assets/images/sanji.png",
+    img: "images/sanji.png",
   },
   {
     id: 4,
     name: "usopp",
-    img: "assets/images/usopp.png",
+    img: "images/usopp.png",
   },
   {
     id: 5,
     name: "nami",
-    img: "assets/images/nami.png",
+    img: "images/nami.png",
   },
   {
     id: 6,
     name: "robin",
-    img: "assets/images/robin.png",
+    img: "images/robin.png",
   },
   {
     id: 7,
     name: "chop",
-    img: "assets/images/chop.png",
+    img: "images/chop.png",
   },
   {
     id: 8,
     name: "franky",
-    img: "assets/images/franky.png",
+    img: "images/franky.png",
   },
   {
     id: 9,
     name: "brook",
-    img: "assets/images/brook.png",
+    img: "images/brook.png",
   },
   {
     id: 10,
     name: "jimbe",
-    img: "assets/images/jimbe.png",
+    img: "images/jimbe.png",
   },
 ];
 
 const cardContainer = document.querySelector(".card-container");
-const available = document.querySelector("#available");
+const available = document.querySelector("#timer");
 const modalTitle = document.querySelector("#modal-title");
 const modal = document.querySelector("#modal");
+const timer = document.getElementById("timer");
+const spanPlayer = document.getElementById("player__name");
 let currentCards = [...CARDS, ...CARDS];
-let isPaused = false;
-let counter = CARDS.length + 10;
-let isLose = false;
+let counter = 0;
 
 // Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
@@ -75,26 +75,44 @@ function shuffle(array) {
   return array;
 }
 
+function startTimer() {
+  this.loop = setInterval(() => {
+    const currentTime = +timer.innerHTML;
+    timer.innerHTML = currentTime + 1;
+  }, 1000);
+}
+
+window.onload = () => {
+  spanPlayer.innerHTML = localStorage.getItem("player");
+  startTimer();
+  drawCards();
+};
+
 function win() {
-  isPaused = true;
   modalTitle.innerHTML = "You win! 🙌🥳";
   modal.classList.add("modal--open");
 }
-function lose() {
-  isLose = true;
+
+/* function lose() {
   modalTitle.innerHTML = "You lose 😢😩";
   modal.classList.add("modal--open");
+} */
+
+function checkEndGame() {
+  const cardGuessed = document.querySelectorAll(".card--guessed");
+
+  if (cardGuessed.length === CARDS.length * 2) {
+    clearInterval(this.loop);
+    win();
+  }
 }
 
 function handleClick(e) {
   const { target } = e;
   if (
-    !isPaused &&
-    !isLose &&
     !target.classList.contains("card--guessed") &&
     !target.classList.contains("card--picked")
   ) {
-    isPaused = true;
     const picked = cardContainer.querySelector(".card--picked");
     if (picked) {
       if (picked.dataset.id === target.dataset.id) {
@@ -102,31 +120,16 @@ function handleClick(e) {
         picked.classList.remove("card--picked");
         target.classList.add("card--guessed");
         picked.classList.add("card--guessed");
-        isPaused = false;
+        checkEndGame();
       } else {
         target.classList.add("card--picked");
         setTimeout(() => {
           target.classList.remove("card--picked");
           picked.classList.remove("card--picked");
-          isPaused = false;
         }, 1500);
-      }
-      console.log("counter", counter);
-      counter -= 1;
-      available.innerHTML = counter;
-      if (counter === 0) {
-        lose();
       }
     } else {
       target.classList.add("card--picked");
-      isPaused = false;
-    }
-    // Validate is already win
-    const isWin =
-      cardContainer.querySelectorAll(".card--guessed").length ===
-      currentCards.length;
-    if (isWin) {
-      win();
     }
   }
 }
@@ -140,7 +143,7 @@ function drawCards() {
     card.className = "card";
     card.setAttribute("data-id", element.id);
     card.innerHTML = `
-    <div class="card__front" style="background-image: url('${element.img}')"></div>
+    <div class="card__front" style="background-image: url('../${element.img}')"></div>
     <div class="card__back"></div>
     `;
     card.addEventListener("click", handleClick);
@@ -150,10 +153,6 @@ function drawCards() {
 
 document.querySelector("#play-again").addEventListener("click", () => {
   modal.classList.remove("modal--open");
-  isPaused = false;
-  isLose = false;
-  counter = CARDS.length + 10;
+  startTimer();
   drawCards();
 });
-
-drawCards();

@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tag -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="assets/style/style.css" />
-    <title>Memory Game - @fe.sousa92</title>
+    <title>Memory Game Login | @fe.sousa92</title>
+    <link rel="stylesheet" href="assets/style/login.css" />
+    <link rel="stylesheet" href="assets/style/reset.css" />
+    <link
+      rel="shortcut icon"
+      href="assets/icons/daSilva.svg"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    <main class="content">
-      <header class="header">
-        <h1 class="title">Memory Game</h1>
-        <div class="movement">
-          <h6 class="subtitle">Moviments</h6>
-          <div class="available" id="available">1</div>
+    <main>
+      <form>
+        <h1>LOGIN</h1>
+        <div class="login__label">
+          <label for="login__name">Name: </label>
+          <input
+            type="text"
+            name="login__name"
+            id="login__name"
+            placeholder="Your Login"
+          />
+          <!--           <label for="login__password">Password: </label>
+          <input
+            type="password"
+            name="login__password"
+            id="login__password"
+            placeholder="Your Password"
+          /> -->
+          <button type="submit" id="login__submit" disabled>Play</button>
         </div>
-      </header>
-      <section class="card-container">
-        <!-- <div class="card">
-          <div class="card__front"></div>
-          <div class="card__back"></div>
-        </div> -->
-      </section>
+        <!--login__label-->
+      </form>
     </main>
-    <div class="modal" id="modal">
-      <div class="modal-container">
-        <h3 class="modal-title" id="modal-title">You Win!</h3>
-        <button type="button" class="button" id="play-again">
-          Play Again.
-        </button>
-      </div>
-    </div>
-    <script src="assets/scripts/script.js"></script>
+    <script defer src="assets/scripts/login.js"></script>
   </body>
 </html>

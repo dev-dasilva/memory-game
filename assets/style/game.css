@@ -13,6 +13,8 @@ body {
   height: 100%;
   background-color: var(--dark-brown);
   padding: 0.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .content {
@@ -35,10 +37,12 @@ body {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+
 .movement {
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin: 0 10px;
 }
 
 .subtitle {
@@ -59,10 +63,15 @@ body {
   padding: 0.5rem 1rem;
 }
 
+.info__player {
+  display: flex;
+  align-items: center;
+}
+
 .card-container {
   display: grid;
-  grid-gap: 3em;
-  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2.6rem;
+  grid-template-columns: repeat(7, 1fr);
   margin: 0 auto;
 }
 

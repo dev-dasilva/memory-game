@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tag -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link rel="stylesheet" href="../style/game.css" />
+    <title>Memory Game - @fe.sousa92</title>
+  </head>
+  <body>
+    <main class="content">
+      <header class="header">
+        <h1 class="title">Memory Game</h1>
+        <div class="info__player">
+          <div class="movement">
+            <h6 class="subtitle">Timer</h6>
+            <div class="available" id="timer">1</div>
+          </div>
+          <div class="movement">
+            <h6 class="subtitle">Player</h6>
+            <div class="available" id="player__name">my name</div>
+          </div>
+        </div>
+      </header>
+      <section class="card-container">
+        <!-- <div class="card">
+          <div class="card__front"></div>
+          <div class="card__back"></div>
+        </div> -->
+      </section>
+    </main>
+    <div class="modal" id="modal">
+      <div class="modal-container">
+        <h3 class="modal-title" id="modal-title">You Win!</h3>
+        <button type="button" class="button" id="play-again">
+          Play Again.
+        </button>
+      </div>
+    </div>
+    <script src="../scripts/game.js"></script>
+  </body>
+</html>
